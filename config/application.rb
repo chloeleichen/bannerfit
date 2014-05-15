@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
+
 module Bannerfit
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -21,3 +23,13 @@ module Bannerfit
     # config.i18n.default_locale = :de
   end
 end
+
+# If you are deploying on Heroku with Rails 3.2 only, you may want to set:
+
+#        config.assets.initialize_on_precompile = false
+
+#      On config/application.rb forcing your application to not access the DB
+#      or load models when precompiling your assets.
+
+
+# config.assets.initialize_on_precompile = false
