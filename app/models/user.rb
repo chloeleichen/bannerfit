@@ -5,7 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-         #setup protected attributes for mass assignment 
+   #relationships with status 
+
+   has_many :statuses
+
+ 	def full_name 
+
+ 		first_name + " " +last_name 
+ 	end 
 
          
 end
