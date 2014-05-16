@@ -4,8 +4,9 @@ class StatusesController < ApplicationController
   # AUTHENTICATE USER WITH DEVISE 
 
 
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
+  
   # GET /statuses
   # GET /statuses.json
   def index

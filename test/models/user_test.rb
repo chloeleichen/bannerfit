@@ -32,23 +32,47 @@ class UserTest < ActiveSupport::TestCase
   # end 
 
 
-  test"profile_name shoudlnt have space" do 
+  test"profile_name should not have space" do 
 
-  	user= User.new 
+  	user= User.new(first_name: 'Chloe', last_name: 'Chen', email: 'chloe@test.com')
+    user.password = user.password_confirmation ="12345678"
 
-  	users(:Chloe)
-  	user.profile_name =users(:Chloe).profile_name
+    # PAY ATTENTION TO PASSWORD LENGTH 
+
+    user.profile_name = "name with space "
+
+     
+  	
 
   	assert !user.save
   	assert !user.errors[:profile_name].empty?
-  	assert user.errors.include?("Profile name only allows letters")
+
+    puts user.errors.inspect 
+
+
+    # PAY ATTENTION TO SYNTAX HERE, TREEHOUSE WRONG 
+
+
+  	assert user.errors.any?{|k, v| v.include? "does not allow white space"}
 
     # Problems here
 
   end 
 
 
+test"profile_name should pass " do 
 
+    user= User.new(first_name: 'Chloe', last_name: 'Chen', email: 'chloe@test.com')
+    user.password = user.password_confirmation ="12345678"
+
+    user.profile_name = "name123"
+
+  
+    assert user.valid?
+
+  
+
+  end 
 
 
 end

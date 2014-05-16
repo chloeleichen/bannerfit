@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
 
   validates :profile_name, presence: true,
 							uniqueness: true,
-							format: { with: /\A[a-zA-Z]+\z/,
-    message: "only allows letters" }
+							format: { with: /\A[a-zA-Z0-9_-]+\z/,
+    message: "does not allow white space" }
 
 
    #relationships with status 
