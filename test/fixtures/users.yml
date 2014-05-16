@@ -1,0 +1,12 @@
+chloe:
+  first_name: Chloe
+  last_name: Chen
+  profile_name: ChloeChen
+  email: chloe@test.com
+
+
+jeremy:
+  first_name: Jeremy
+  last_name: Stevens
+  profile_name: jeremy
+  email: jeremy@test.com

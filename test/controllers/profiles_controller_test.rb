@@ -2,8 +2,57 @@ require 'test_helper'
 
 class ProfilesControllerTest < ActionController::TestCase
   test "should get show" do
-    get :show
+    get :show, id: users(:chloe).profile_name
     assert_response :success
+
+    # assert_template 'profile/show'
   end
+
+
+
+  test "should redirect to 404 if not found" do 
+
+  	get :show, id: "false"
+
+  	assert_response :not_found 
+
+
+
+  end 
+
+  test "variables assigned sucessfully" do 
+
+  	get :show, id: users(:chloe).profile_name
+
+  	assert assigns(:user)
+
+  	assert_not_empty assigns(:statuses)
+    
+
+    assert_response :success
+
+
+
+  end 
+
+
+  test "should only show own statuses on profile page" do 
+
+
+  get :show, id: users(:jeremy).profile_name
+
+  assigns(:statuses).each do |status|
+
+  	puts status.user 
+
+  	assert_equal users(:jeremy), status.user 
+  end 
+
+
+
+end 
+
+
+
 
 end
