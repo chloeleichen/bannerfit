@@ -21,9 +21,14 @@
 		<%= status.name %>
 		<%= status.content%>
 
-		<!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+		
 
 		<div><span class="label label-default"><%=link_to time_ago_in_words(status.created_at), status_path(status) %> ago</span></div>
+
+		<!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+
+		<%= link_to 'Edit', edit_status_path(status) %>
+        <%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 		 
 
