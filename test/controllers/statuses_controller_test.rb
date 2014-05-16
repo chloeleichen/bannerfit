@@ -11,10 +11,19 @@ class StatusesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:statuses)
   end
 
-  test "should get new" do
+  test "should ask user login before post" do
     get :new
-    assert_response :success
+    assert_response :redirect 
+    assert_redirected_to new_user_session_path 
   end
+
+
+  # test "should render new page when logged in" do 
+  #   get :new 
+  #   sign_in users(:Chloe)
+  #   assert_response :success 
+
+  # end 
 
   test "should create status" do
     assert_difference('Status.count') do
