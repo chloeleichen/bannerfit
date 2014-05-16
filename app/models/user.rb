@@ -5,6 +5,18 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
+  #data validation 
+
+  validates :first_name, presence: true
+
+  validates :last_name, presence: true
+
+  validates :profile_name, presence: true,
+							uniqueness: true,
+							format: { with: /\A[a-zA-Z]+\z/,
+    message: "only allows letters" }
+
+
    #relationships with status 
 
    has_many :statuses

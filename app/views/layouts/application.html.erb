@@ -57,16 +57,16 @@
 					<li> <%= link_to "Edit", edit_user_registration_path %></li>
 					<li> <%= link_to "Profile", "#" %></li>
 					<li class="divider"></li>
-            			<li> <%= link_to "Log out", destroy_user_session_path, :method=> :delete %></li>
+            			<li> <%= link_to "Log out", logout_path %></li>
 
             			</ul>
 
 					<% else %>
 
+           <!--  SEE RAKE ROUTES  -->
 
-
-					<li> <%= link_to "Register", new_user_registration_path %></li>
-					<li> <%= link_to "Log In", new_user_session_path %></li>
+					<li> <%= link_to "Register", register_path %></li>
+					<li> <%= link_to "Log In", login_path %></li>
 
 		    
 					
@@ -84,24 +84,23 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-	
 
+<% flash.each do |type, message| %>
 
-<% if notice %>
+<div class="alert <%= flash_class(type) %> container">
+  <button class="close" data-dismiss="alert"> x </button>
 
-	<div class="alert ">
-	 	
-	 	<%= notice %>
-	</div>
-<% end%>
-
-<% if alert %>
-
-    <div class="alert">
-	
-		<%= alert %>
-   	</div>
+  <%= message %> 
+</div>
 <% end %>
+
+
+
+
+
+	
+
+
 
 	
 
