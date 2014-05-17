@@ -26,7 +26,7 @@ class ProfilesControllerTest < ActionController::TestCase
 
   	assert assigns(:user)
 
-  	assert_not_empty assigns(:statuses)
+  	assert_not_empty assigns(:banners)
     
 
     assert_response :success
@@ -36,16 +36,16 @@ class ProfilesControllerTest < ActionController::TestCase
   end 
 
 
-  test "should only show own statuses on profile page" do 
+  test "should only show own banners on profile page" do 
 
 
   get :show, id: users(:jeremy).profile_name
 
-  assigns(:statuses).each do |status|
+  assigns(:banners).each do |banner|
 
-  	puts status.user 
+  	puts banner.user 
 
-  	assert_equal users(:jeremy), status.user 
+  	assert_equal users(:jeremy), banner.user 
   end 
 
 

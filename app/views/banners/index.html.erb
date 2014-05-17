@@ -1,0 +1,41 @@
+
+
+<div class="page-header"> <h1>All Banners</h1></div>
+
+ <% if user_signed_in? %>
+
+<%= link_to 'Post a new banner', new_banner_path, class: "btn btn-success" %>
+
+ <% end %>
+
+
+<div class="row">
+<% @banners.each do |banner| %>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+     <img src="http://placehold.it/300x200" alt="...">
+      <div class="caption">
+
+        <div class="span1"> 
+
+
+
+        </div>
+
+        <strong> <%= banner.user.profile_name %> </strong>
+        
+
+        <%= banner.name %>
+        
+        <%= banner.content %>
+        
+        <div><span class="label label-default"><%=link_to time_ago_in_words(banner.created_at), banner_path(banner) %> ago</span></div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+</div>

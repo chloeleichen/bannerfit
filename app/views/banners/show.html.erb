@@ -1,0 +1,26 @@
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @banner.name %>
+</p>
+
+<b>Owner</b>
+<%= @banner.user.profile_name %>
+
+<p>
+
+
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @banner.content %>
+</p>
+
+ <% if user_signed_in? %>
+
+<%= link_to 'Edit', edit_banner_path(@banner) %> |
+<%= link_to 'Back', banners_path %>
+
+<% end %>

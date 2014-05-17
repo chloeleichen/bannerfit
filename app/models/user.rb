@@ -17,9 +17,9 @@ class User < ActiveRecord::Base
     message: "does not allow white space" }
 
 
-   #relationships with status 
+   #relationships with banner 
 
-   has_many :statuses
+   has_many :banners
 
  	def full_name 
 

@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140515005341) do
 
-  create_table "statuses", force: true do |t|
+  create_table "banners", force: true do |t|
     t.string   "name"
     t.text     "content"
     t.datetime "created_at"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140515005341) do
     t.integer  "user_id"
   end
 
-  add_index "statuses", ["user_id"], name: "index_statuses_on_user_id", using: :btree
+  add_index "banners", ["user_id"], name: "index_banners_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"

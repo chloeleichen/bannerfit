@@ -13,12 +13,12 @@ Rails.application.routes.draw do
   end
 
 
-  resources :statuses
+  resources :banners
 
-  get "feed", to: "statuses#index", as: :feed 
+  get "feed", to: "banners#index", as: :feed 
 
 
-  root to: "statuses#index"
+  root to: "banners#index"
 
   get '/:id', to: "profiles#show"
 

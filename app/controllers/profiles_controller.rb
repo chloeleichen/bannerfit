@@ -5,13 +5,13 @@ class ProfilesController < ApplicationController
 
   	if @user 
 
-  		@statuses = @user.statuses.all
+  		@banners = @user.banners.all
 
   		render actions: :show 
 
   	else 
 
-  	render file: 'public/404', status: 404, formats: [:html] 
+  	render file: 'public/404', banner: 404, formats: [:html] 
     end 
 
   end
