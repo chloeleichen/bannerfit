@@ -29,6 +29,10 @@ gem 'spring',        group: :development
 #Add user authentification 
 gem 'devise'
 
+#ADD PAPER CLIP 
+
+gem "paperclip", "~> 4.1"
+
 
 #add simple_form with twitter bootsrap 
 

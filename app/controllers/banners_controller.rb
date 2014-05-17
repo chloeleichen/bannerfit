@@ -47,6 +47,8 @@ class BannersController < ApplicationController
   # PATCH/PUT /banners/1.json
   def update
 
+   
+
     respond_to do |format|
       if @banner.update(banner_params)
         format.html { redirect_to @banner, notice: 'banner was successfully updated.' }
@@ -61,6 +63,7 @@ class BannersController < ApplicationController
   # DELETE /banners/1
   # DELETE /banners/1.json
   def destroy
+
     @banner.destroy
     respond_to do |format|
       format.html { redirect_to banners_url, notice: 'banner was successfully destroyed.' }
