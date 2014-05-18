@@ -1,0 +1,34 @@
+ <ul>
+    <%= link_to "All banners", banners_path, class: "active" %>
+  <li>
+          
+            
+            <% if user_signed_in? %>
+
+              <span><%= current_user.profile_name %></span>
+          
+
+          <li> <%= link_to "Edit", edit_user_registration_path %></li>
+          <li> <%= link_to "Profile",profile_path(current_user.profile_name) %></li>
+          
+          <li> <%= link_to "Log out", logout_path %>
+
+          
+
+          <% else %>
+
+           <!--  SEE RAKE ROUTES  -->
+
+          <li> <%= link_to "Register", register_path %></li>
+          <li> <%= link_to "Log In", login_path %></li>
+
+          <% end %>
+
+
+
+            
+      
+
+  </ul>
+
+  

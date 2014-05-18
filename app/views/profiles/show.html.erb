@@ -1,9 +1,7 @@
-<div class = "page-header"> 
+<div class = "page-header row"> 
 
-	<h1> <%= @user.full_name %></h1>
-
-
-
+	   <div class="col-xs-6"><%= image_tag @user.gravatar_url %></div>
+  <strong> <%= @user.profile_name %> </strong>
 </div>
 
 <div class="row">
