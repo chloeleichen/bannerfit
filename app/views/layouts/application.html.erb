@@ -93,17 +93,9 @@
 </div>
 <% end %>
 
-
-
-
       <div class="row">
          <%= yield %>
       </div>
-
-
-
-
-
    
 </div>
 </div>
@@ -117,6 +109,12 @@
       $.slidebars();
     });
   }) (jQuery);
+</script>
+
+<script>
+      new GridScrollFx( document.getElementById( 'grid' ), {
+        viewportFactor : 0.4
+      } );
 </script>
 
 
