@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Bannerfit<%= " | #{@page_title}" if @page_title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
  
@@ -10,20 +11,77 @@
   
 </head>
 
-<body>
+<body id ="top">
 
-  <div id="page" class ="container">
-      <div id="header">
-        <a id="simple-menu" href="#sidr">MENU</a>
-      </div>
+  <nav class="navbar navbar-fixed-top sb-slide" role="navigation">
+
+<div class="sb-toggle-left navbar-left">
+<div class="navicon-line"></div>
+<div class="navicon-line"></div>
+<div class="navicon-line"></div>
+</div>
+<div class="sb-toggle-right navbar-right visible-xs">
+<div class="navicon-line"></div>
+<div class="navicon-line"></div>
+<div class="navicon-line"></div>
+</div>
+
+<div class="container">
+<div id="logo" class="navbar-left">
+<a href="#">
+
+  <%= image_tag("logo.png", alt: "Bannerfit", width:"130", height:"" ) %>
+
+</a>
+</div>
+<ul class="nav navbar-nav navbar-right hidden-xs">
+
+
+ 
+
+   <% if user_signed_in? %>
+
+  <li class="dropdown">
+
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.profile_name %><b class="caret"></b></a>
+
+    <ul class="dropdown-menu">
+          
+
+          <li> <%= link_to "Edit", edit_user_registration_path %></li>
+          <li> <%= link_to "Profile",profile_path(current_user.profile_name) %></li>
+
+    <li class="divider"></li>
+          
+          <li> <%= link_to "Log out", logout_path %> </li>
+
+    </ul>
+
+
+    </li>
+
+
+             <% else %>
+
+           <!--  SEE RAKE ROUTES  -->
+
+          <li> <%= link_to "Register", register_path %></li>
+          <li> <%= link_to "Log In", login_path %></li>
+
+          <% end %>
+</ul>
 
 
 
-    <div id= "sidr">
+</div>
 
-    <%= render(:partial => 'layouts/navigation', :locals => {:subjects =>@subjects }) %>
+</nav>
 
-    </div>
+
+<div id="sb-site">
+
+
+  <div class="container">
 
 
     <% flash.each do |type, message| %>
@@ -38,28 +96,28 @@
 
 
 
-      <div id="content">
+      <div class="row">
          <%= yield %>
       </div>
 
 
 
 
-   
 
    
-  </div>
+</div>
+</div>
 
-
+<%= render(:partial => 'layouts/navigation', :locals => {:subjects =>@subjects }) %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-   <script>
-$(document).ready(function() {
-  $('#simple-menu').sidr();
-});
+
+<script>
+  (function($) {
+    $(document).ready(function() {
+      $.slidebars();
+    });
+  }) (jQuery);
 </script>
-
- 
-
 
 
 </body>
