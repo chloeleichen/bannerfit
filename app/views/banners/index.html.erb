@@ -12,7 +12,7 @@
           </li>
           <% @banners.each do |banner| %>
 
-          <li><a href="#"><%= image_tag banner.pic.url(:medium) %> <h3><%= banner.name %>
+          <li><a href="/banners/<%= banner.id %>"><%= image_tag banner.pic.url(:medium) %> <h3><%= banner.name %>
              </h3> </a> </li>
            <% end %>
         </ul>

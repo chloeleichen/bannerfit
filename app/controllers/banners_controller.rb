@@ -46,29 +46,40 @@ class BannersController < ApplicationController
   # PATCH/PUT /banners/1
   # PATCH/PUT /banners/1.json
   def update
-
-   
-
     respond_to do |format|
-      if @banner.update(banner_params)
+
+      if @banner.update(banner_params) && current_user.id == @banner.user_id 
         format.html { redirect_to @banner, notice: 'banner was successfully updated.' }
         format.json { render :show, banner: :ok, location: @banner }
       else
-        format.html { render :edit }
-        format.json { render json: @banner.errors, banner: :unprocessable_entity }
+        # format.html { render :index }
+        # format.json { render json: @banner.errors, banner: :unprocessable_entity }
+        flash[:alert] = "Access denied"
+        redirect_to banners_path 
+        return false
       end
-    end
+    end 
   end
 
   # DELETE /banners/1
   # DELETE /banners/1.json
   def destroy
 
+    if current_user.id == @banner.user_id 
+
     @banner.destroy
     respond_to do |format|
-      format.html { redirect_to banners_url, notice: 'banner was successfully destroyed.' }
-      format.json { head :no_content }
+    format.html { redirect_to banners_url, notice: 'banner was successfully destroyed.' }
+    format.json { head :no_content }
     end
+
+    else 
+      flash[:alert] = "Access denied"
+      redirect_to banners_path 
+      return false
+    end 
+
+    
   end
 
   private
