@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517023146) do
+ActiveRecord::Schema.define(version: 20140522100146) do
 
   create_table "banners", force: true do |t|
     t.string   "name"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20140517023146) do
   end
 
   add_index "banners", ["user_id"], name: "index_banners_on_user_id"
+
+  create_table "user_subscriptions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "subscriber_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_subscriptions", ["user_id", "subscriber_id"], name: "index_user_subscriptions_on_user_id_and_subscriber_id"
 
   create_table "users", force: true do |t|
     t.string   "first_name"

@@ -62,10 +62,12 @@ class UserTest < ActiveSupport::TestCase
 
 test"profile_name should pass " do 
 
-    user= User.new(first_name: 'Chloe', last_name: 'Chen', email: 'chloe@test.com')
+    user= User.new(first_name: 'Chloe', last_name: 'Chen', email: 'chloe1@test.com')
     user.password = user.password_confirmation ="12345678"
 
-    user.profile_name = "name123"
+    user.profile_name = "name"
+
+    puts user.inspect
 
   
     assert user.valid?
@@ -73,6 +75,26 @@ test"profile_name should pass " do
   
 
   end 
+
+
+  test "no error raised when trying to access a subscriber list" do 
+    assert_nothing_raised do 
+
+      users(:chloe).subscribers
+
+    end 
+  end 
+
+  test "can create subscriptions" do 
+
+    users(:chloe).subscribers << users(:jeremy)
+    users(:chloe).subscribers.reload 
+
+    assert users(:chloe).subscribers.include?(users(:jeremy))
+  end 
+
+
+
 
 
 end

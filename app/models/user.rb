@@ -14,12 +14,14 @@ class User < ActiveRecord::Base
   validates :profile_name, presence: true,
 							uniqueness: true,
 							format: { with: /\A[a-zA-Z0-9_-]+\z/,
-    message: "does not allow white space" }
+              message: "does not allow white space" }
 
 
    #relationships with banner 
 
    has_many :banners
+   has_many :user_subscriptions
+   has_many :subscribers, through: :user_subscriptions
 
  	def full_name 
 
