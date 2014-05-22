@@ -25,6 +25,7 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+/public/system/banners
 
 ## Specific to RubyMotion:
 .dat*
