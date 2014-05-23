@@ -8,8 +8,13 @@ class UserSubscriptionsController < ApplicationController
 		 
 
 		if params[:subscribe_id]
-			@subscribe = User.find(params[:subscribe_id])
-			@user_subscription = UserSubscription.new 
+			@subscribe = User.where(profile_name: params[:subscribe_id]).first
+
+
+
+			raise ActiveRecord::RecordNotFound if @subscribe.nil?
+
+			@user_subscription = current_user.user_subscriptions.new(subscribe: @subscribe) 
 		else 
 
 	
@@ -17,6 +22,30 @@ class UserSubscriptionsController < ApplicationController
 		
 		end 
 
+	
+
+	rescue ActiveRecord::RecordNotFound 
+
+		render file: "public/404", status: :not_found 
+	 
+
+	end 
+
+
+	def create 
+
+	@user_subscription = current_user.user_subscriptions.new(user_subscription_params) 
+		if params[:user_subscription].has_key? (:subscribe_id)
+			@subscribe = User.where(profile_name:params[:user_subscription][:subscribe_id]).first
+			 
+
+			
+			@user_subscription.save 
+			flash[:success] = "you have subscribed #{@subscribe.profile_name}"
+		else 
+			flash[:error] = "Firend required"
+			redirect_to root_path 
+		end 
 
 	end 
 
@@ -28,7 +57,7 @@ class UserSubscriptionsController < ApplicationController
     #   @user_subscription = user_subscriptions.find(params[:id])
     # end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    #Never trust parameters from the scary internet, only allow the white list through.
     def user_subscription_params
       params.require(:user_subscription).permit(:user_id, :subscribe_id)
     end

@@ -12,7 +12,7 @@ class ProfilesControllerTest < ActionController::TestCase
 
   test "should redirect to 404 if not found" do 
 
-  	get :show, id: "false"
+  	get :show, id: "invalid"
 
   	assert_response :not_found 
 
