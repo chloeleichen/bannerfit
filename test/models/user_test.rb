@@ -77,20 +77,20 @@ test"profile_name should pass " do
   end 
 
 
-  test "no error raised when trying to access a subscriber list" do 
+  test "no error raised when trying to access a subscribe list" do 
     assert_nothing_raised do 
 
-      users(:chloe).subscribers
+      users(:chloe).subscribes
 
     end 
   end 
 
   test "can create subscriptions" do 
 
-    users(:chloe).subscribers << users(:jeremy)
-    users(:chloe).subscribers.reload 
+    users(:chloe).subscribes << users(:jeremy)
+    users(:chloe).subscribes.reload 
 
-    assert users(:chloe).subscribers.include?(users(:jeremy))
+    assert users(:chloe).subscribes.include?(users(:jeremy))
   end 
 
 

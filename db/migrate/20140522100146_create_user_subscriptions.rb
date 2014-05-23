@@ -3,11 +3,11 @@ class CreateUserSubscriptions < ActiveRecord::Migration
     create_table :user_subscriptions do |t|
 
     	t.integer :user_id 
-    	t.integer :subscriber_id 
+    	t.integer :subscribe_id 
       	t.timestamps
     end
 
-    add_index :user_subscriptions, [:user_id, :subscriber_id]
+    add_index :user_subscriptions, [:user_id, :subscribe_id]
 
   end
 end

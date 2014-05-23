@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
    has_many :banners
    has_many :user_subscriptions
-   has_many :subscribers, through: :user_subscriptions
+   has_many :subscribes, through: :user_subscriptions
 
  	def full_name 
 

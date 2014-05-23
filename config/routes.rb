@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
 
   resources :banners
+  resources :user_subscriptions
 
   get "feed", to: "banners#index", as: :feed 
 
