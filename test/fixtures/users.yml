@@ -3,6 +3,7 @@ chloe:
   last_name: Chen
   profile_name: ChloeChen
   email: chloe@test.com
+  encrypted_password: "$2a$10$IoqGPHx8H9Zd21JQG5jRDuw7o9FiOgBMMgCD/SdPXQ3LSwkRgq6TG"
 
 
 jeremy:

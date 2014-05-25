@@ -34,12 +34,10 @@ class UserSubscriptionsController < ApplicationController
 
 	def create 
 
-	@user_subscription = current_user.user_subscriptions.new(user_subscription_params) 
-		if params[:user_subscription].has_key? (:subscribe_id)
+	
+		if user_subscription_params && user_subscription_params.has_key?(:subscribe_id)
 			@subscribe = User.where(profile_name:params[:user_subscription][:subscribe_id]).first
-			 
-
-			
+			@user_subscription = current_user.user_subscriptions.new(subscribe:@subscribe)
 			@user_subscription.save 
 			flash[:success] = "you have subscribed #{@subscribe.profile_name}"
 		else 
@@ -48,6 +46,12 @@ class UserSubscriptionsController < ApplicationController
 		end 
 
 	end 
+
+
+	def destroy 
+
+
+    end 
 
 
 

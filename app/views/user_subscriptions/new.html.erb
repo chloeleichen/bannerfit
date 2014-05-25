@@ -4,7 +4,10 @@
 <%= @subscribe.profile_name %>
 
 <%= form_for @user_subscription, method: :post do |form| %>
-		<%= submit_tag "Subscribe", class: "btn" %>
+
+<%= form.hidden_field :subscribe_id, value: @subscribe.profile_name %>
+
+<%= submit_tag "Subscribe", class: "btn" %>
 
 
 
