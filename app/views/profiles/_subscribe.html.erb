@@ -1,0 +1,4 @@
+<%= form_for(current_user.subscriptions.build(subscribed_id: @user.id)) do |f| %>
+  <div><%= f.hidden_field :subscribed_id %></div>
+  <%= f.submit "Subscribe", class: "btn btn-large btn-primary" %>
+<% end %>

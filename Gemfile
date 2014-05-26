@@ -56,9 +56,9 @@ gem 'simple_form'
 
 # end 
 
-group :production do 
-	gem 'pg'
-end 
+# group :production do 
+# 	gem 'pg'
+# end 
 
 
 # group :test do 

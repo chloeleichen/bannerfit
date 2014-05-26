@@ -17,11 +17,21 @@ class User < ActiveRecord::Base
               message: "does not allow white space" }
 
 
-   #relationships with banner 
+   #subscriptions with banner 
 
    has_many :banners
-   has_many :user_subscriptions
-   has_many :subscribes, through: :user_subscriptions
+
+   has_many :subscriptions, :foreign_key => "subscriber_id",
+                            :dependent => :destroy
+
+  has_many :subscribeds, through: :subscriptions
+
+
+
+  has_many :reverse_subscriptions, :foreign_key => "subscribed_id",
+                                   :class_name => "Subscription",
+                                   :dependent => :destroy
+  has_many :subscribers, :through => :reverse_subscriptions
 
  	def full_name 
 
@@ -32,6 +42,20 @@ class User < ActiveRecord::Base
   def to_param
     profile_name 
   end 
+
+
+    def subscribing?(other_user)
+    subscriptions.find_by(subscribed_id: other_user.id)
+  end
+
+  def subscribe!(other_user)
+    subscriptions.create!(subscribed_id: other_user.id)
+  end
+
+  def unsubscribe!(other_user)
+    subscriptions.find_by(subscribed_id: other_user.id).destroy
+  end 
+
 
 
 

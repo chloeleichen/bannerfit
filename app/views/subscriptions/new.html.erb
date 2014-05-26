@@ -1,0 +1,14 @@
+<% if @subscribed %>
+
+
+<%= @subscribe.profile_name %>
+
+<%= form_for @subscription, method: :post do |form| %>
+
+<%= form.hidden_field :subscribed_id, value: @subscribed.profile_name %>
+
+<%= submit_tag "Subscribe", class: "btn" %>
+
+<% end %>
+
+<% end %>

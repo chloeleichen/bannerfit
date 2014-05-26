@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   devise_for :users , skip: [:sessions]
 
-   as :user do
+  as :user do
   
   get "/login" => "devise/sessions#new" , as: :new_user_session
   post "/login" => "devise/sessions#create" , as: :user_session
@@ -24,11 +24,18 @@ Rails.application.routes.draw do
   end
 
 
+  resources :users, :only => [:show] do 
+    member do 
+      get :subscribed, :subscribers
+      end 
+  end  
+
+
 
 
 
   resources :banners
-  resources :user_subscriptions
+  resources :subscriptions
 
   get "feed", to: "banners#index", as: :feed 
 

@@ -1,0 +1,8 @@
+
+  <div id="follow_form">
+  <% if current_user.subscribing?(@user) %>
+    <%= render 'unsubscribe' %>
+  <% else %>
+    <%= render 'subscribe' %>
+  <% end %>
+  </div>

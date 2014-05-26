@@ -2,7 +2,11 @@
 
 	   <div class="col-xs-6"><%= image_tag @user.gravatar_url, class: "img-circle"  %></div>
   <strong> <%= @user.profile_name %> </strong>
-  <span class="label label-default"><%=link_to "Subscribe", new_user_subscription_path(subscribe_id: @user) %> </span>
+ 
+<%= render 'subscribe_form' if signed_in? %>
+
+
+
 </div>
 
 <div class="row">

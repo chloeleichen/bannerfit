@@ -27,14 +27,16 @@ ActiveRecord::Schema.define(version: 20140522100146) do
 
   add_index "banners", ["user_id"], name: "index_banners_on_user_id", using: :btree
 
-  create_table "user_subscriptions", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "subscribe_id"
+  create_table "subscriptions", force: true do |t|
+    t.integer  "subscriber_id"
+    t.integer  "subscribed_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "user_subscriptions", ["user_id", "subscribe_id"], name: "index_user_subscriptions_on_user_id_and_subscribe_id", unique: true, using: :btree
+  add_index "subscriptions", ["subscribed_id"], name: "index_subscriptions_on_subscribed_id", using: :btree
+  add_index "subscriptions", ["subscriber_id", "subscribed_id"], name: "index_subscriptions_on_subscriber_id_and_subscribed_id", unique: true, using: :btree
+  add_index "subscriptions", ["subscriber_id"], name: "index_subscriptions_on_subscriber_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"
