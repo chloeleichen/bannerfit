@@ -5,6 +5,7 @@ class SubscriptionsController < ApplicationController
 
 
 
+
 def create 
   @subscribed = User.find(params[:subscription][:subscribed_id])
   

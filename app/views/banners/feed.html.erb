@@ -1,0 +1,17 @@
+  <section class="grid-wrap">
+        <ul class="grid swipe-right" id="grid">
+          <li class="title-box">
+            <h2>
+
+ <%= link_to 'Post a new banner', new_banner_path%>
+   
+</h2>
+          </li>
+          <% @banners.each do |banner| %>
+
+          <li><a href="/banners/<%= banner.id %>"><%= image_tag banner.pic.url(:medium) %> <h3><%= banner.name %>
+             </h3> </a> </li>
+           <% end %>
+        </ul>
+      </section>
+  

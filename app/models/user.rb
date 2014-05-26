@@ -56,6 +56,8 @@ class User < ActiveRecord::Base
     subscriptions.find_by(subscribed_id: other_user.id).destroy
   end 
 
+  
+
 
 
 

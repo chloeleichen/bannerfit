@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   resources :banners
   resources :subscriptions
 
-  get "feed", to: "banners#index", as: :feed 
+  get "feed", to: "banners#feed", as: :feed 
 
 
   root to: "banners#index"

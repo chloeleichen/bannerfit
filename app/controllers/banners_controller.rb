@@ -4,7 +4,7 @@ class BannersController < ApplicationController
   # AUTHENTICATE USER WITH DEVISE 
 
 
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :feed]
 
   
   # GET /banners
@@ -81,6 +81,11 @@ class BannersController < ApplicationController
 
     
   end
+
+
+  def feed
+    @banners = Banner.from_users_subscribed_by(current_user)
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.
