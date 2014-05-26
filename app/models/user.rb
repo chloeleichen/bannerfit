@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   end 
 
 
-    def subscribing?(other_user)
+  def subscribing?(other_user)
     subscriptions.find_by(subscribed_id: other_user.id)
   end
 
@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
     subscriptions.find_by(subscribed_id: other_user.id).destroy
   end 
 
-  
+
 
 
 

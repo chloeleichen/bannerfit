@@ -24,18 +24,20 @@ Rails.application.routes.draw do
   end
 
 
-  resources :users, :only => [:show] do 
-    member do 
-      get :subscribed, :subscribers
-      end 
-  end  
+  # resources :users, :only => [:show] do 
+   
+  # end  
 
 
 
 
 
   resources :banners
-  resources :subscriptions
+  resources :subscriptions do 
+     member do 
+      get :subscribed, :subscribers
+      end 
+    end 
 
   get "feed", to: "banners#feed", as: :feed 
 
